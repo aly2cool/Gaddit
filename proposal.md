@@ -10,7 +10,7 @@ and delete their posts and/or comments.
 
 ## Wireframe
 
-
+Wire_frames Folder
 
 ## Initial thoughts on website structure
 
