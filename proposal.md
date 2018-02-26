@@ -1,4 +1,4 @@
-*** Name / Date ***
+*** Aly Badran / 02-26-18 ***
 
 # Gaddit Proposal
 
@@ -10,7 +10,7 @@ and delete their posts and/or comments.
 
 ## Wireframe
 
-(Your wireframes go here. Preferably two or more)
+
 
 ## Initial thoughts on website structure
 
