@@ -1,0 +1,20 @@
+* {
+
+}
+
+h1 {
+  color: red;
+  text-align: center;
+  font-size: 50px;
+}
+
+.loginInput {
+  text-align: left;
+  padding-left: 50px;
+
+}
+
+footer {
+  text-align: center;
+  font-size: 22px;
+}
