@@ -8,5 +8,8 @@ module.exports = {
   },
   createUser(user) {
     return db.one(`INSERT INTO ga_users (first_name, last_name, user_name, password) VALUES ($/first_name/, $/last_name/, $/user_name/, $/password/) RETURNING *`, user)
+  },
+  deleteUser(user){
+    return db.none(`DELETE * FROM ga_users WHERE user = $1`, user)
   }
 }

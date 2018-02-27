@@ -3,25 +3,15 @@ const gadditController = require('../controllers/gaddit-controller')
 const router = express.Router()
 const viewsController = require('../controllers/viewsController')
 
-router.get('/', gadditController.index)
 
-router.get('/signup', gadditController.newUser, viewsController.showAdd)
+router.get('/signup', viewsController.showAdd)
 
-// router.get('/signup', (req, res) => {
-//   res.render('./gaddit/signup')
-// })
-
-
-router.get('/login', (req, res) => {
-  res.render('./gaddit/login')
-})
-
-router.get('/courses', (req, res) => {
-  res.render('./gaddit/courses')
-})
-
-router.get('/course:id')
-
-router.get('/courses/course:id')
+router.route('/')
+.get((req, res) => { res.render('./gaddit/index')})
+.post(gadditController.newUser, (req, res) => {
+    res.render('./gaddit/users'), {
+      data: res.locals.users
+    }
+});
 
 module.exports = router

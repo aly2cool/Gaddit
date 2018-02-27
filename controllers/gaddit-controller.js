@@ -1,31 +1,29 @@
+
 const gadditDB = require('../models/gadditDB')
 
 module.exports = {
 
-index(req, res){
+index(req, res, next){
   gadditDB.findAll()
-  .then(() => {
-    res.render('index')
+  .then(results => {
+    res.locals.users = results
+    next()
   })
-  .catch(err => {
-    res.status(500).send({
-    message: 'I fucked up',
-    error: err
-      })
-    })
+  .catch(err => next(err))
   },
+
 newUser(req, res, next) {
   console.log(req.body)
-  console.log('im heree')
   gadditDB.createUser(req.body)
   .then(results => {
-      res.locals.results = results
+      res.locals.users = results
+      next()
     })
-    .catch(err => {
-      res.status(500).json({
-          message: 'error',
-          error: err
-      })
-    })
+    .catch(err => next(err))
+  },
+delete(req, res, next){
+    gadditDB.deleteUser(req.params.id)
+    .then(() => next())
+    .catch(err => next(err))
   }
 }
