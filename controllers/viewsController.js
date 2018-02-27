@@ -1,12 +1,17 @@
 module.exports = {
 
-showAdd(req, res){
+showAll(req, res){
+  res.render('./gaddit/users', {
+    data: res.locals.Allusers
+  })
+},
+
+showSignUp(req, res){
   res.render('./gaddit/signup')
 },
-showUsers(req, res){
-  res.render('./gaddit/users', {
-    data: res.locals.users
-    })
-  }
+
+postUser(req, res){
+  res.redirect('back')
+}
 
 }

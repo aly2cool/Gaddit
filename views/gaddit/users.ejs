@@ -1,9 +1,12 @@
 <% include ../partials/boilerplate.ejs %>
 
-<% users.forEach(el => { %>
+<% Allusers.forEach(el => { %>
 
-  <h5> First Name: <%= users.first_name %>
+  <h5> First Name: <%= el.first_name %><br> Last Name: <%=el.last_name%><br> User Name: <%= el.user_name %><br> Password: <%= el.password %></h5>
 
 <% }) %>
+
+
+
 
 <% include ../partials/footer.ejs %>

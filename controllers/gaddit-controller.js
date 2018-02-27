@@ -6,7 +6,7 @@ module.exports = {
 index(req, res, next){
   gadditDB.findAll()
   .then(results => {
-    res.locals.users = results
+    res.locals.Allusers = results
     next()
   })
   .catch(err => next(err))
@@ -16,7 +16,7 @@ newUser(req, res, next) {
   console.log(req.body)
   gadditDB.createUser(req.body)
   .then(results => {
-      res.locals.users = results
+      res.locals.newPerson = results
       next()
     })
     .catch(err => next(err))
