@@ -18,3 +18,8 @@ footer {
   text-align: center;
   font-size: 22px;
 }
+
+.loginInput {
+  text-align: center;
+  margin-right: 50px;
+}

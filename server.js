@@ -6,6 +6,8 @@ const gadditRouter = require('./routes/routes')
 const ejs = require('ejs')
 const bodyParser = require('body-parser')
 const methodOverride = require('method-override')
+const session = require('express-session')
+const loginRouter =  require('./routes/loginRouter')
 const app = express()
 
 app.use(logger('dev'))
@@ -15,11 +17,21 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(methodOverride('_method'))
 
-app.get('/', (req, res) => {
-    res.render('./index')
-})
+app.use(session({
+  resave: false,
+  saveUninitialized: false,
+  secret: 'very secret'
+}))
 
-app.use('/home', gadditRouter)
+app.use('/login', loginRouter)
+
+app.use('/', gadditRouter)
+
+// app.get('/', (req, res) => {
+//     res.render('./index')
+// })
+// app.get('/', gadditRouter)
+// app.use('/profile', profileRouter)
 
 
 app.listen(PORT, () => {
