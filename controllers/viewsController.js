@@ -11,21 +11,30 @@ showSignUp(req, res){
 },
 
 showHome(req, res){
-  res.render('./home/index')
+  console.log(req.session.user)
+
+  res.render('./home/index', {
+    data: req.session.user
+  })
 },
 
 showIndex(req, res){
-  res.render('./index.ejs')
+  console.log(req.session.user)
+  res.render('./index.ejs', {
+    data: req.session.user
+  })
 },
 
 postUser(req, res){
-  res.redirect('/home')
+  res.redirect('/')
 },
 
 loginForm(req, res){
-
   res.render('./home/login')
+},
 
-  }
+showPost(req, res){
+  res.render('./home/post')
+}
 
 }

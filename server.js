@@ -8,6 +8,8 @@ const bodyParser = require('body-parser')
 const methodOverride = require('method-override')
 const session = require('express-session')
 const loginRouter =  require('./routes/loginRouter')
+const signup = require('./routes/signup')
+const postRouter = require('./routes/postRouter')
 const app = express()
 
 app.use(logger('dev'))
@@ -23,9 +25,17 @@ app.use(session({
   secret: 'very secret'
 }))
 
-app.use('/login', loginRouter)
+// app.use()
 
+app.use('/signup', signup)
+app.use('/login', loginRouter)
 app.use('/', gadditRouter)
+app.use('/posts', postRouter)
+
+//
+// app.use('/', (req, res) => {
+//     res.render('./index')
+// })
 
 // app.get('/', (req, res) => {
 //     res.render('./index')

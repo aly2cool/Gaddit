@@ -31,7 +31,7 @@ delete(req, res, next){
     console.log(req.body.user_name)
     gadditDB.findOne(req.body.user_name)
   },
-  authenticate(req, res) {
+  authenticate(req, res, next) {
     gadditDB.authenticateByUsername(req.body)
     .then(user => {
       // console.log(req.session.user)
@@ -39,16 +39,17 @@ delete(req, res, next){
       req.session.isLoggedIn = true;
       req.session.success = 'Authenticated as ' + user.user_name;
       console.log('login successful.')
-      res.redirect('/home')
+      next();
     })
     .catch(err => {
       req.session.error = 'Authentication failed. Please try again';
       res.redirect(`back`);
       console.log('we fucked up')
+      next(err);
     })
   },
   isLoggedIn(req, res, next) {
-    if (!req.session.user) {
+    if (req.session.user) {
       console.log(req.session)
       next()
     } else {
@@ -56,5 +57,9 @@ delete(req, res, next){
       console.log('wtf')
       res.redirect(`/login`)
     }
+  },
+  logout(req, res){
+    req.session.destroy()
+    res.redirect('/')
   }
 }

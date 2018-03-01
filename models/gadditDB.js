@@ -16,7 +16,7 @@ module.exports = {
     return db.none(`DELETE * FROM ga_users WHERE user_name = $1`, user)
   },
   authenticateByUsername(user){
-        return db.one(`SELECT * FROM ga_users WHERE user_name = $[user_name]`, user)
+        return db.one(`SELECT * FROM ga_users WHERE user_name = $[user_name] AND password = $[password]`, user)
   }
   // checkIfExists(user){
   //   return db.none(`SELECT * FROM ga_users WHERE user_name=$1`)

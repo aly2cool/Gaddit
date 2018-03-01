@@ -8,13 +8,14 @@ CREATE TABLE ga_users (
 id SERIAL PRIMARY KEY,
 first_name VARCHAR(255),
 last_name VARCHAR(255),
-user_name VARCHAR(255),
+user_name VARCHAR(255) UNIQUE,
 password VARCHAR(255)
 );
 
 CREATE TABLE ga_posts (
 id SERIAL PRIMARY KEY,
-post_name TEXT,
+post_user VARCHAR references ga_users(user_name),
+post_title TEXT,
 post_content TEXT,
 date_created TIMESTAMP NOT NULL DEFAULT NOW()
 );
