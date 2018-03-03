@@ -14,14 +14,13 @@ module.exports = {
   },
   updatePost(post){
     return db.one(`UPDATE ga_posts SET
-                  post_user = $/post_user/
-                  post_title = $/post_title/
+                  post_title = $/post_title/,
                   post_content = $/post_content/
                   WHERE id = $/id/
                   RETURNING *`, post)
   },
-  deletePost(user){
-    return db.none(`DELETE * FROM ga_posts WHERE post_name = $1`, user)
+  deletePost(id){
+    return db.none(`DELETE FROM ga_posts WHERE id = $1`, id)
   }
   // authenticateByUsername(user){
   //       return db.one(`SELECT * FROM ga_posts WHERE user_name = $[user_name] AND password = $[password]`, user)

@@ -30,7 +30,8 @@ app.use(session({
 app.use('/signup', signup)
 app.use('/login', loginRouter)
 app.use('/', gadditRouter)
-app.use('/posts', postRouter)
+app.use('/index', postRouter)
+// app.use('/index', indexRouter)
 
 //
 // app.use('/', (req, res) => {

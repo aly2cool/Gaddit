@@ -1,0 +1,23 @@
+<% include ../partials/boilerplate.ejs %>
+
+<% data.forEach(el => { %>
+
+  <h3><a href="/index/<%=el.id%>"> <%= el.post_title %></a> </h2>
+  <h2>by <%= el.post_user %> </h2>
+  <form method="POST" action="/index/<%=el.id%>?_method=Delete">
+  <% if(users.user_name != el.post_user){ %>
+   <input type="hidden" value="Delete" name="id">
+<%} else {%>
+   <input type="submit" value="Delete" name="id">
+   <%}%>
+  </form>
+
+  <form method="GET" action="/index/edit/<%=el.id%>">
+  <input type="submit" value="edit" name="id">
+
+
+<% }) %>
+
+
+
+<% include ../partials/footer.ejs %>

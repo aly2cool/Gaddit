@@ -1,5 +1,4 @@
 const postDB = require('../models/postDB')
-const session = require('express-session')
 
 module.exports = {
 
@@ -8,18 +7,19 @@ index(req, res, next){
   .then(results => {
     res.locals.allPosts = results
     next()
-  })
+    console.log(results)
+    })
   .catch(err => next(err))
   },
 
-newUser(req, res, next) {
+newPost(req, res, next) {
   // console.log(req.body)
   postDB.createPost(req.body)
   .then(results => {
       res.locals.newPost = results
-      next()
+      res.render('./home/posted')
     })
-    .catch(err => next(err))
+    .catch(err => console.log(err))
   },
 delete(req, res, next){
     postDB.deletePost(req.params.id)
@@ -33,5 +33,14 @@ findPost(req, res, next){
       next()
     })
     .catch(err => next(err))
+  },
+updatePost(req, res){
+  console.log('i got hit ')
+    postDB.updatePost(req.body)
+    .then(results => {
+        res.locals.updated = results
+        res.redirect('/index')
+    })
+    .catch(err => console.log(err))
   }
 }

@@ -1,12 +1,14 @@
 <% include ../partials/boilerplate.ejs %>
 
-
+<% if(data) { %>
+    <h1> You are already logged in </h1>
+<%}%>
 
 <form action="/login" method="POST">
   Username:
   <input type="text" name="user_name"><br></br>
   Password:
-  <input type="text" name="password"><br></br>
+  <input type="password" name="password"><br></br>
   <input type="submit">
 </form>
 <br></br>

@@ -1,15 +1,5 @@
 <% include ../partials/boilerplate.ejs %>
 
-<h1 id='welcome'> Welcome <%=data.user_name;%> </h1>
-<a href=/logout><button>Logout</button></a>
 
-<h1> Home </h1>
-
-<div class="posts">
-  <form method="POST" action="/home">
-    <input style type="text" id='box'name="post" placeholder="Post title">
-    <textarea rows="7" id='bigbox'cols="50" placeholder="Post content"></textarea>
-    <input id="submitButton" type=submit>
-</div>
 
 <% include ../partials/footer.ejs %>

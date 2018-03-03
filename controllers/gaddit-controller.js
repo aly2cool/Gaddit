@@ -54,10 +54,11 @@ delete(req, res, next){
       next()
     } else {
       req.session.error = `Login required`
+      res.render('login', { error: req.session.error });
       console.log('wtf')
-      res.redirect(`/login`)
-    }
-  },
+      res.redirect('/login?e=' + encodeURIComponent('Incorrect username or password'))
+  }
+},
   logout(req, res){
     req.session.destroy()
     res.redirect('/')

@@ -1,0 +1,10 @@
+<% include ../partials/boilerplate.ejs %>
+
+  <form method="POST" action="/index/edit/<%=data.id%>?_method=PUT">
+  <input type="hidden" name="id" value="<%=data.id%>">
+  title: <input type="text" name="post_title" value="<%=data.post_title%>" style=font-size:18px;><br><br>
+  <textarea rows="7" id='bigbox' cols="50" name="post_content" style=font-size:18px;><%=data.post_content%></textarea><br><br>
+  <input type='submit' name="edit" value="submit">
+</form><br><br>
+
+<% include ../partials/footer.ejs %>
