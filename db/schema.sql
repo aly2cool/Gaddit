@@ -1,4 +1,4 @@
-\c gaddit_db
+-- \c gaddit_db
 
 DROP TABLE IF EXISTS ga_posts;
 DROP TABLE IF EXISTS ga_comments;
