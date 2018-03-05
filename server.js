@@ -25,24 +25,12 @@ app.use(session({
   secret: 'very secret'
 }))
 
-// app.use()
 
 app.use('/signup', signup)
 app.use('/login', loginRouter)
 app.use('/', gadditRouter)
 app.use('/index', postRouter)
-// app.use('/index', indexRouter)
 
-//
-// app.use('/', (req, res) => {
-//     res.render('./index')
-// })
-
-// app.get('/', (req, res) => {
-//     res.render('./index')
-// })
-// app.get('/', gadditRouter)
-// app.use('/profile', profileRouter)
 
 
 app.listen(PORT, () => {
