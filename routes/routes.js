@@ -9,6 +9,7 @@ router.get('/',  viewsController.showIndex)
 router.get('/home', gadditController.isLoggedIn, viewsController.showHome)
 router.get('/users', gadditController.index, viewsController.showAll)
 router.get('/logout', gadditController.logout)
+router.get('/users/:id', gadditController.isLoggedIn, gadditController.findUser, viewsController.showUserPage)
 
 // router.post('/home', gadditController.)
 // router.use(gadditController.isLoggedIn)

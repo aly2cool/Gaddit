@@ -1,3 +1,4 @@
+let moment = require('moment')
 module.exports = {
 
 showAll(req, res){
@@ -25,7 +26,7 @@ showIndex(req, res){
 },
 
 postUser(req, res){
-    res.redirect('/')
+    res.redirect('/login')
   },
 
 loginForm(req, res){
@@ -53,7 +54,8 @@ showPost(req, res){
 
 showCurrentPost(req, res){
   res.render('./home/checkPost', {
-    data: res.locals.post
+    data: res.locals.post,
+    users: req.session.user
   })
 },
 
@@ -61,6 +63,14 @@ showUpdatedPost(req, res){
   res.render('./home/edit', {
     data: res.locals.post,
     users: req.session.user
+  })
+},
+
+showUserPage(req, res){
+  res.render('./home/userPage', {
+    users: req.session.user,
+    data: res.locals.oneUser,
+    moment: moment
   })
 }
 

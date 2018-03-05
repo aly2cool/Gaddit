@@ -1,6 +1,7 @@
 
 const gadditDB = require('../models/gadditDB')
 const session = require('express-session')
+const moment = require('moment');
 
 module.exports = {
 
@@ -27,10 +28,16 @@ delete(req, res, next){
     .then(() => next())
     .catch(err => next(err))
   },
-  findUser(req, res){
-    console.log(req.body.user_name)
-    gadditDB.findOne(req.body.user_name)
+  findUser(req, res, next){
+    console.log(req.params.id)
+    gadditDB.findOne(req.params.id)
+    .then(results => {
+      res.locals.oneUser = results
+      next()
+    })
+    .catch(err => next(err))
   },
+
   authenticate(req, res, next) {
     gadditDB.authenticateByUsername(req.body)
     .then(user => {

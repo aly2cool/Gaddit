@@ -1,0 +1,65 @@
+<% include ../partials/boilerplate.ejs %>
+<div class="navbar navbar-default navbar-fixed-top">
+<div class="ui inverted menu" style="height:50px;margin-bottom:0px;">
+  <a id="toggle">
+    <img src="/img/hamburger.png" style="width:40px;height:35px;margin-top:9px;margin-left:5px;margin-right:10px;"></img>
+  </a>
+  <a class="logout" style="margin-left:1230px;font-size:20px;margin-top:13px;color:red;text-align:rigt;" href="/logout">
+    Logout
+  </a>
+</div>
+</div>
+
+<div class="ui left vertical inverted sidebar labeled icon menu">
+  <a class="item" href="/home">
+    <i class="home icon"></i>
+    Home
+  </a>
+  <a class="item">
+    <i class="block layout icon"></i>
+    Topics
+  </a>
+  <a class="item">
+    <i class="smile icon"></i>
+    Friends
+  </a>
+</div>
+
+<%if(users.user_name != data.user_name) { %>
+
+<div class="ui card" style="margin:0 auto;margin-top:100px;">
+  <div class="image">
+    <img src="/img/avatar.png" style="width:200px;height:200px;margin:0 auto;">
+  </div>
+  <div class="content">
+    <a class="header"><%=data.user_name%></a>
+    <div class="meta">
+      <span class="date">Joined in <%= moment().format(' MMMM, Do YYYY') %> </span>
+    </div>
+    <div class="description">
+      I am a user of Gaddit.
+    </div>
+  </div>
+  <div class="extra content">
+    <a>
+      <i class="user icon"></i>
+      0 Friends
+    </a>
+  </div>
+</div>
+
+
+<%} else { %>
+  <script> let timer = setTimeout(function() {
+  window.location='http://localhost:3000/home'
+}, 1000);
+</script>
+<%}%>
+<script>
+$('#toggle').click(function(){
+  $('.ui.labeled.icon.sidebar')
+  .sidebar('toggle')
+})
+</script>
+
+<% include ../partials/footer.ejs %>

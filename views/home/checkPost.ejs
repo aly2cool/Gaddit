@@ -1,7 +1,139 @@
 <% include ../partials/boilerplate.ejs %>
+<div class="navbar navbar-default navbar-fixed-top">
+<div class="ui inverted menu" style="height:50px;margin-bottom:0px;">
+  <a id="toggle">
+    <img src="/img/hamburger.png" style="width:40px;height:35px;margin-top:9px;margin-left:5px;margin-right:10px;cursor:pointer;"></img>
+  </a>
+  <a class="logout" style="margin-left:1230px;font-size:20px;margin-top:13px;color:red;text-align:rigt;" href="/logout">
+    Logout
+  </a>
+</div>
+</div>
 
-<h2><%=data.post_user%> posted</h2>
-<p><%=data.post_title%></p>
-<p><%=data.post_content%></p>
+<div class="ui left vertical inverted sidebar labeled icon menu">
+  <a class="item" href="/home">
+    <i class="home icon"></i>
+    Home
+  </a>
+  <a class="item">
+    <i class="block layout icon"></i>
+    Topics
+  </a>
+  <a class="item">
+    <i class="smile icon"></i>
+    Friends
+  </a>
+</div>
+<div class="ui large feed" style="margin-left:300px;margin-top:100px;">
+  <div class="event">
+    <div class="label">
+    <%if(data.post_user == users.user_name){ %>
+      <i class="pencil icon"></i>
+      <i class="or"></i>
+      <i class="red archive icon" id="delete" style="margin-left:-50px;"></i>
+  <%  } else { %>
+      <img src="/img/avatar.png">
+  <%  } %>
+    </div>
+    <div class="content">
+      <div class="summary">
+        <%if(data.post_user == users.user_name){ %>
+        You submitted a new post to the page
+          <%  } else { %>
+        <%=data.post_user%> submitted a new post to the page
+            <%  } %>
+        <div class="date">
+          <%=data.date_created%>
+        </div>
+      </div>
+      <div class="extra text">
+        <%=data.post_content%>
+      </div>
+      <div class="meta">
+        <a class="like">
+        <i class="comment icon" style="margin-right:30px;"></i><i class="like icon"></i> <span class="likes">11</span> Likes
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
 
+
+<!-- begin comment section -->
+<div class="ui comments" style="margin-left:300px;margin-top:60px;">
+  <div class="comment">
+    <a class="avatar">
+      <img src="/img/avatar.png">
+    </a>
+    <div class="content">
+      <a class="author"><%=users.user_name%></a>
+      <div class="metadata">
+        <div class="date">2 days ago</div>
+      </div>
+      <form class="ui reply form">
+        <div class="field">
+          <textarea></textarea>
+        </div>
+        <div class="ui primary submit labeled icon button">
+          <i class="icon edit"></i> Add Reply
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!--modal delete form -->
+<div class="ui tiny modal" style="height:220px;width:400px;margin:0 auto;margin-top:100px;">
+  <div class="header">Delete</div>
+  <div class="content">
+    <p>Are you sure you want to delete this post?</p>
+  </div>
+  <div class="actions" style="margin-top:40px;">
+    <form method="POST" action="/index/<%=data.id%>?_method=Delete">
+      <input type="hidden" name="id" value="<%=data.id%>"></input>
+      <input class=" ui red button" type="submit" value="Yes"></input>
+    </form>
+
+  </div>
+</div>
+
+<!--modal edit form -->
+<div class="ui mini modal" style="height:450px;width:600px;margin-top:70px;margin-left:400px;">
+  <form class="ui form" action='/index/edit/<%=data.id%>?_method=PUT' method="POST">
+  <input type="hidden" name="id" value="<%=data.id%>"></input>
+  <input type="hidden" name="post_user" value="<%=data.user_name%>"></input>
+  <div class="header"><input type="text" name="post_title" placeholder="Post Title" value="<%=data.post_title%>"style="margin-left:-15px;border:none;height:60px;width:550px;font-size:40px;font-weight:bold;"></input></div>
+  <div class="content">
+  <textarea type="text" name="post_content" placeholder="<%=data.post_content%>" style="border:none;height:300px;width:550px;font-size:30px;font-weight:bold;margin-top:20px;"></textarea>
+  <div class="ui buttons" style="margin-left:400px;margin-top:10px;">
+  <label id="cancel" class="ui button">Close</label>
+  <div class="or"></div>
+  <button class="ui red button">Submit</button>
+</div>
+</div>
+</div>
+</form>
+
+<script>
+$('.pencil.icon').click(function(){
+  $('.ui.mini.modal').modal('show')
+})
+$('#delete').click(function(){
+  $('.ui.tiny.modal').modal('show')
+})
+$('#cancel').click(function(){
+  $('.ui.mini.modal').modal('hide')
+})
+$(".like.icon").click( function() {
+    var value = parseInt($(".likes").text(), 10) + 1;
+    $(".likes").text(value);
+});
+$('#toggle').click(function(){
+  $('.ui.labeled.icon.sidebar')
+  .sidebar('toggle')
+});
+$('.pencil.icon').click(function(){
+
+})
+</script>
 <% include ../partials/footer.ejs %>

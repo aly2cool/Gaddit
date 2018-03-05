@@ -1,20 +1,55 @@
 <% include ../partials/boilerplate.ejs %>
 
-<h1 id='welcome'> Welcome <%=data.user_name%> </h1>
-<a href=/logout><button>Logout</button></a>
+<div class="ui inverted menu" style="height:50px;">
+  <a class="active item" style="color:red;">
+    Home
+  </a>
+  <a class="item" href='/index' style="color:red;">
+    Gaddit
+  </a>
+  <a class="item" style="color:red;">
+    Friends
+  </a>
+  <a class="logout" style="margin-left:1030px;font-size:20px;margin-top:13px;color:red" href="/logout">
+    Logout
+  </a>
+</div>
 
+<div class="ui mini modal" style="height:500px;width:600px;margin:0 auto;margin-top:20px;">
+  <form class="ui form" action='/index' method="POST">
+  <input type="hidden" name="post_user" value="<%=data.user_name%>"></input>
+  <div class="header"><input type="text" name="post_title" placeholder="Post Title" style="margin-left:-15px;border:none;height:60px;width:550px;font-size:40px;font-weight:bold;"></input></div>
+  <div class="content">
+  <textarea type="text" name="post_content" placeholder="Post Content" style="border:none;height:300px;width:550px;font-size:30px;font-weight:bold;margin-top:20px;"></textarea>
+  <div class="ui buttons" style="margin-left:400px;margin-top:10px;">
+  <label id="cancel" class="ui button">Close</label>
+  <div class="or"></div>
+  <button class="ui red button">Submit</button>
+</div>
+</div>
+</div>
+</form>
 
-<h1> Home </h1>
-<a href="/index"><h2 style=text-align:center;> Check out what's new!</h2></a>
+<h1 class="welcome" style="text-align:center;"><em> Welcome <%=data.user_name%> </em></h1>
 
-<!--<div class="posts">
-  <form method="POST" action="/index">
-    <input type="hidden" name="post_user" value="<%=data.user_name%>">
-    <input type="text" id='box'name="post_title" placeholder="Post title">
-    <textarea rows="7" id='bigbox'cols="50" name="post_content" placeholder="Post content"></textarea>
-    <input id="submitButton" type=submit>
-</div>-->
+<a href="/index"><h2 style=text-align:center;color:red>Check out what's new!</h2></a>
 
+<button class="ui red button" id="modalButton" style="margin-left:610px;margin-top:40px;color:black;">Post Something</button>
+<script>
+$('#modalButton').click(function(){
+  $('.ui.mini.modal').modal('show')
+})
+$('#cancel').click(function(){
+  $('.ui.mini.modal').modal('hide')
+})
+$('.welcome')
+  .transition('horizontal flip')
+  .transition('horizontal flip')
+  .transition('horizontal flip')
+  .transition('stop')
+  .transition('vertical flip')
+;
+</script>
 
 
 <% include ../partials/footer.ejs %>

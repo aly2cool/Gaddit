@@ -1,17 +1,50 @@
 <% include ./partials/boilerplate.ejs %>
+<div class="navbar navbar-default navbar-fixed-top">
+<div class="ui inverted menu" style="height:50px;margin-bottom:0px;">
+  <a id="toggle">
+    <img src="/img/hamburger.png" style="width:40px;height:35px;margin-top:9px;margin-left:5px;margin-right:10px;cursor:pointer;"></img>
+  </a>
+  <a class="logout" style="margin-left:1230px;font-size:20px;margin-top:13px;color:red;text-align:rigt;" href="/logout">
+    Logout
+  </a>
+</div>
+</div>
+
+<div class="ui left vertical inverted sidebar labeled icon menu">
+  <a class="item" href="/login">
+    <i class="home icon"></i>
+    Home
+  </a>
+  <a class="item">
+    <i class="block layout icon"></i>
+    Topics
+  </a>
+  <a class="item">
+    <i class="smile icon"></i>
+    Friends
+  </a>
+</div>
+
 
 <% if(data) { %>
-  <h1> welcome back </h1>
-  <a href=/home style="color:red;margin-left:575px;">click here to visit your profile</a>
+  <h1 style="text-align:center;margin-top:100px;font-size:50px;"> welcome back </h1>
+  <a href="/home" style="margin-left:585px;color:red;font-size:15px;">click here to visit your profile</a>
 <% } %>
 
 <% if(!data) { %>
+  <div class=loginInput style="text-align:center;margin-top:200px;">
   <h1> Gaddit </h1>
-  <div class=loginInput>
-  <a href="./login"><button>Login</button></a>
-  <a href="/signup"><button>Sign up</button></a><br></br>
+  <a href="./login"><button class="ui red button">Login</button></a>
+  <a href="/signup"><button class="ui red button">Sign up</button></a><br></br>
   </div>
   <div class="posts">
   </div>
   <% include ./partials/footer.ejs %>
 <%}%>
+
+<script>
+$('#toggle').click(function(){
+  $('.ui.labeled.icon.sidebar')
+  .sidebar('toggle')
+})
+</script>

@@ -5,6 +5,18 @@ window.location='http://localhost:3000/index'
   }, 3000);
 </script>
 
-<h2> Your post has been submitted! please click <a href=/index>here</a> to return. </h2>
-<h2> Or wait 3 seconds to be redirected automatically </h2>
+<div class="ui icon message" style="margin-left:50px;">
+  <i class="notched circle loading icon"></i>
+  <div class="content">
+    <div class="header">
+      Just one second
+    </div>
+    <p>We're sending that content for you.</p>
+  </div>
+</div>
+
+<!-- use above code for loading content -->
+
+<h2 style="text-align:center;"> Your post has been submitted! please click <a href=/index>here</a> to return. </h2>
+<h2 style="text-align:center;"> Or wait 3 seconds to be redirected automatically </h2>
 <% include ../partials/footer.ejs %>

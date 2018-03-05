@@ -9,7 +9,8 @@ id SERIAL PRIMARY KEY,
 first_name VARCHAR(255),
 last_name VARCHAR(255),
 user_name VARCHAR(255) UNIQUE,
-password VARCHAR(255)
+password VARCHAR(255),
+data_created TIMESTAMP NOT NULL DEFAULT NOW()
 );
 
 CREATE TABLE ga_posts (
@@ -22,5 +23,6 @@ date_created TIMESTAMP NOT NULL DEFAULT NOW()
 
 CREATE TABLE ga_comments (
 id SERIAL PRIMARY KEY,
-user_content TEXT
+user_content TEXT,
+data_created TIMESTAMP NOT NULL DEFAULT NOW()
 );

@@ -1,16 +1,20 @@
 <% include ../partials/boilerplate.ejs %>
 
 <% if(data) { %>
-    <h1> You are already logged in </h1>
-<%}%>
+    <h1 style="text-align:center;margin-top:100px"> You are already logged in </h1>
 
-<form action="/login" method="POST">
-  Username:
-  <input type="text" name="user_name"><br></br>
-  Password:
-  <input type="password" name="password"><br></br>
-  <input type="submit">
-</form>
-<br></br>
-<a href=/signup>Don't have an account?</a>
-<% include ../partials/footer.ejs %>
+<a href="/home"><h1 style="text-align:center;"> Go Home </h1></a>
+<%} else { %>
+  <form class="ui form segment" action="/login" method="POST" style="width:400px;margin:0 auto;margin-top:100px;">
+    <p>Go ahead and log in.</p>
+    <div class="field">
+      <label>Username</label>
+      <input placeholder="Username" name="user_name" type="text">
+    </div>
+    <div class="field">
+      <label>Password</label>
+      <input type="password" name="password">
+    </div>
+    <button class="ui red button" type="submit">Submit</button>
+  </form>
+<%}%>
