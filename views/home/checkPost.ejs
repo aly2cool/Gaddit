@@ -68,14 +68,15 @@
     <div class="content">
       <a class="author"><%=users.user_name%></a>
       <div class="metadata">
-        <div class="date">2 days ago</div>
+        <div class="date"><%=users.date_created%></div>
       </div>
-      <form class="ui reply form">
+      <form class="ui reply form" method="POST" action="/comment">
         <div class="field">
-          <textarea></textarea>
+          <input name="user_content" placeholder="Enter comment"/>
         </div>
-        <div class="ui primary submit labeled icon button">
-          <i class="icon edit"></i> Add Reply
+        <input type="hidden" name="post_id" value="<%=post.id%>" />
+        <div>
+          <input type="submit" value=comment>
         </div>
       </form>
     </div>

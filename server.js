@@ -10,6 +10,7 @@ const gadditRouter = require('./routes/routes')
 const loginRouter =  require('./routes/loginRouter')
 const signup = require('./routes/signup')
 const postRouter = require('./routes/postRouter')
+const commentsRouter = require('./routes/commentsRouter')
 const app = express()
 
 app.use(logger('dev'))
@@ -30,6 +31,7 @@ app.use('/signup', signup)
 app.use('/login', loginRouter)
 app.use('/', gadditRouter)
 app.use('/index', postRouter)
+app.use('/comment', commentsRouter)
 
 
 
