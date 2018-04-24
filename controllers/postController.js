@@ -1,4 +1,5 @@
 const postDB = require('../models/postDB')
+const commentsDB = require('../models/commentsDB')
 
 module.exports = {
 
@@ -27,6 +28,7 @@ delete(req, res, next){
     .catch(err => next(err))
   },
 findPost(req, res, next){
+  console.log('inside find post', req.params.id);
     postDB.findOne(req.params.id)
     .then(result => {
       res.locals.post = result
@@ -42,5 +44,18 @@ updatePost(req, res){
         res.redirect('/index')
     })
     .catch(err => console.log(err))
+  },
+  getComments(req, res, next){
+    console.log('inside get comments controller in posts controller -> ', req.params.id);
+    commentsDB.getComments(req.params.id)
+    .then(results => {
+      res.json({
+        data: results
+      })
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).send(err)
+    })
   }
 }

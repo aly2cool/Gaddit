@@ -55,7 +55,8 @@ showPost(req, res){
 showCurrentPost(req, res){
   res.render('./home/checkPost', {
     data: res.locals.post,
-    users: req.session.user
+    users: req.session.user,
+    comments: res.locals.comments
   })
 },
 
@@ -71,7 +72,9 @@ showUserPage(req, res){
     users: req.session.user,
     data: res.locals.oneUser,
     moment: moment
-  })
-}
-
+    })
+  },
+renderComment(req, res){
+  res.render('./home/checkPost')
+  }
 }

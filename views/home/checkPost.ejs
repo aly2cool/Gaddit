@@ -70,11 +70,12 @@
       <div class="metadata">
         <div class="date"><%=users.date_created%></div>
       </div>
-      <form class="ui reply form" method="POST" action="/comment">
+      <form class="ui reply form" method="POST" action="/comment/<%=data.id%>">
         <div class="field">
           <input name="user_content" placeholder="Enter comment"/>
         </div>
         <input type="hidden" name="post_id" value="<%=post.id%>" />
+        <input type="hidden" name="commenter" value="<%=users.user_name%>" />
         <div>
           <input type="submit" value=comment>
         </div>

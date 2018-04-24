@@ -10,7 +10,7 @@ router.get('/', gadditController.isLoggedIn, postController.index, viewsControll
 router.delete('/:id', postController.delete, (req, res) => {
       res.redirect('/index')
 })
-router.get('/:id', gadditController.isLoggedIn, postController.findPost, viewsController.showCurrentPost)
+router.get('/:id', gadditController.isLoggedIn, postController.findPost, postController.getComments, viewsController.showCurrentPost)
 router.get('/edit/:id', postController.findPost, viewsController.showUpdatedPost)
 router.put('/edit/:id', postController.updatePost)
 // router.get('/posted', (req, res) => {
