@@ -56,7 +56,7 @@ showCurrentPost(req, res){
   res.render('./home/checkPost', {
     data: res.locals.post,
     users: req.session.user,
-    comments: res.locals.comments
+    comments: res.locals.getInfo,
   })
 },
 

@@ -1,7 +1,7 @@
 \c gaddit_db
 
-DROP TABLE IF EXISTS ga_posts;
 DROP TABLE IF EXISTS ga_comments;
+DROP TABLE IF EXISTS ga_posts;
 DROP TABLE IF EXISTS ga_users;
 
 CREATE TABLE ga_users (

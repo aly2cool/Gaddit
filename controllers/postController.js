@@ -31,6 +31,7 @@ findPost(req, res, next){
   console.log('inside find post', req.params.id);
     postDB.findOne(req.params.id)
     .then(result => {
+      console.log('inside results of find post', result);
       res.locals.post = result
       next()
     })
@@ -46,12 +47,12 @@ updatePost(req, res){
     .catch(err => console.log(err))
   },
   getComments(req, res, next){
-    console.log('inside get comments controller in posts controller -> ', req.params.id);
-    commentsDB.getComments(req.params.id)
+    console.log('inside get comments controller in posts controller -> ', res.locals);
+    commentsDB.getComments(res.locals)
     .then(results => {
-      res.json({
-        data: results
-      })
+      res.locals.getInfo = results
+      console.log('results from get comments', results);
+      next()
     })
     .catch(err => {
       console.log(err);

@@ -15,16 +15,16 @@ module.exports = {
       res.status(500).send(err)
     })
   },
-  // getComments(req, res, next){
-  // console.log('inside get comments controller');
-  // commentsDB.getAllComments()
-  // .then(results => {
-  //   res.locals.comments = results
-  // })
-  // next()
-  // .catch(err => {
-  //   console.log(err);
-  //   res.status(500).send(err)
-  // })
-  // }
+  getComments(req, res, next){
+  console.log('inside get comments controller');
+  commentsDB.getAllComments()
+  .then(results => {
+    res.locals.comments = results
+  })
+  next()
+  .catch(err => {
+    console.log(err);
+    res.status(500).send(err)
+  })
+  }
 }
