@@ -23,7 +23,7 @@ date_created TIMESTAMP NOT NULL DEFAULT NOW()
 
 CREATE TABLE ga_comments (
 id SERIAL PRIMARY KEY,
-post_id INTEGER references ga_posts(id),
+post_id INTEGER references ga_posts(id) ON DELETE CASCADE,
 commenter VARCHAR references ga_users(user_name),
 user_content TEXT,
 date_created TIMESTAMP NOT NULL DEFAULT NOW()

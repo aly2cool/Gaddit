@@ -24,24 +24,25 @@
     Friends
   </a>
 </div>
-<div class="feed" style="position: fixed; top:10%; left: 40%; margin-top:50px; margin-right: 100px;">
+<div class="feed" style="position: fixed; top:10%; left: 35%; margin-top:1%; margin-right: 110px;overflow:auto;height: 500px;">
 
   <% allPosts.forEach(el => { %>
-  <div class="ui feed">
+  <div class="ui feed" style="margin-bottom: 10px;">
     <div class="event">
       <div class="label">
         <img src="/img/avatar.png" style="margin-top:7px;margin-left:15px;">
       </div>
       <div class="content">
-        <div class="summary">
+        <div class="summary" style="font-size: 25px;">
            <a href=/users/<%=el.post_user%>><%=el.post_user%></a> created a post
         </div>
-        <div class="extra text">
+        <div class="extra text" style="font-size: 20px; ">
           <a href="/index/<%=el.id%>"> <%=el.post_title%> </a>
         </div>
     </div>
    </div>
   </div>
+
 
   <% }) %>
 
