@@ -5,7 +5,7 @@ const viewsController = require('../controllers/viewsController')
 const postController = require('../controllers/postController')
 
 
-router.post('/:id', commentsController.create, postController.findPost, viewsController.showCurrentPost)
+router.post('/:id', commentsController.create)
 // router.get('/', commentsController.getComments, viewsController.showCurrentPost)
 
 module.exports = router;

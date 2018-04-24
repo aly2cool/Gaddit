@@ -32,7 +32,7 @@
       <i class="or"></i>
       <i class="red archive icon" id="delete" style="margin-left:-50px;"></i>
   <%  } else { %>
-      <img src="/img/avatar.png">
+      <img src="/img/avatar.png" style="margin-top:8px;margin-left:15px;">
   <%  } %>
     </div>
     <div class="content">
@@ -55,13 +55,15 @@
       </div>
       <div class="meta">
         <a class="like">
-        <i class="comment icon" style="margin-right:30px;"></i><i class="like icon"></i> <span class="likes">11</span> Likes
+        <%=comments.length%> <i class="comment icon" style="margin-right:10px;margin-left: 5px;"></i>
+        <i class="like icon"></i> <span class="likes">11</span> Likes
         </a>
       </div><br><br>
       <%console.log('my results ------->', comments)%>
+      <strong>Comments</strong><br><br>
       <%comments.forEach(el => {%>
-        <%=el.commenter%>
-        <%=el.user_content%><br>
+        <%=el.commenter%> -
+        <%=el.user_content%><br><br>
       <%})%>
     </div>
   </div>

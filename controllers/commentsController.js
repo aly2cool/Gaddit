@@ -7,8 +7,7 @@ module.exports = {
     commentsDB.create(req.body)
     .then(results => {
       console.log('made it in .then');
-      res.locals.comments = results
-      next()
+      res.redirect(`/index/${req.params.id}`)
     })
     .catch(err => {
       console.log(err);
